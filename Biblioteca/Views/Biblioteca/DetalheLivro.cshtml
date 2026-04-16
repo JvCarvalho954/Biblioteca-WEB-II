@@ -1,0 +1,41 @@
+@model Livro 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/css/style.css" type="text/css">
+    <title>Detalhe Livro</title>
+    <style>
+        
+    </style>
+</head>
+<body class="fundoselo">
+   <div id="container">
+    <div class="card-livro">
+        
+        <div class="lado-esquerdo">
+            <div class="img-livro"> 
+    <img src="~/@Model.ImgUrl" alt="Livro">
+
+            </div>
+<div class="ci-b">
+             <button><a asp-area="" asp-controller="Biblioteca" asp-action="Autor">Detalhes sobre o autor</a></button>
+        </div>
+        </div>
+
+        <div class="lado-direito">
+            <h1 class="titulo">@Model.Titulo</h1>
+
+            <p><strong>Resumo:</strong>@Model.Resumo</p>
+
+            <p><strong>Ano de publicação:</strong> @Model.DataPublicacao</p>
+            <p><strong>Autor:</strong> @Model.Autor</p>
+        </div>
+
+    </div>
+</div>
+    </div>
+</body>
+</html>

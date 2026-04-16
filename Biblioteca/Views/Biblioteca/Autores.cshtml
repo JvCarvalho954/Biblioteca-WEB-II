@@ -1,0 +1,42 @@
+@model List<Biblioteca.Models.Autor>;
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Autores</title>
+    <link href="https://fonts.googleapis.com/css2?family=Almendra:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Federo&family=Holtwood+One+SC&family=Italianno&family=Lavishly+Yours&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="~/css/style.css">
+</head>
+<body>
+
+
+
+    <div class="cabecalho">
+        <h1>Biblioteca</h1>
+        <h2>Correio literário</h2>
+    </div>
+<div class="pagina-autores">
+    <div class="lista-autores">
+        @foreach(Autor autor in Model){
+            <div class="autor-card">
+                <div class="autor-img">
+                <img src="~/@autor.ImgUrl" alt="Autor">
+                </div>
+                <div class="autor-info">
+                    <h2>Nome do autor: <span>@autor.Nome</span></h2>
+                    <h2>Obras: <span>@autor.Obras</span></h2>
+                </div>
+                <div class="autor-acao">
+                    <button><a asp-area="" asp-controller="Biblioteca" asp-action="DetalheAutor" asp-route-nome="@autor.Nome">Detalhes sobre o autor</a></button>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+
+</body>
+</html>

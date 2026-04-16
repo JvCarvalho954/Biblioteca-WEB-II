@@ -1,0 +1,80 @@
+@model List<Biblioteca.Models.Livro>;
+
+@* @foreach(Livro item in Model)
+{
+    <h3>Nome: @item.Titulo</h3>
+    <p>Número de páginas: @item.NumPaginas</p>
+    <p>Autor: @item.Autor</p>
+    <p>Gênero: @item.Genero</p>
+    <p>Data de publicação: @item.DataPublicacao</p>
+} *@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Almendra:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Federo&family=Holtwood+One+SC&family=Italianno&family=Lavishly+Yours&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="~/css/style.css" type="text/css">
+
+    <title>Biblioteca</title>
+</head>
+<body>
+    <div class="cabecalho">
+        <h1>Biblioteca</h1>
+        <h2>Correio literário</h2>
+    </div>
+   
+    <div class="livros">
+        <h2>Livros em destaques</h2>
+            <div id="carouselExampleIndicators" class="carousel slide">
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                </div>
+                <div class="carousel-inner">
+                    @{bool primeiro=true;}
+                    @foreach(Livro livro in Model)
+                    {
+                        @if(livro.Destaque){
+                            <div class="carousel-item @(primeiro ? "active" : "")">
+                                <div class="ci">
+                                    <div class="ci-img">
+                                        <img src="~/@livro.ImgUrl" class="d-block w-100" alt="...">
+                                    </div>
+                                    <div class="ci-t">
+                                        <h3 class="titulo-livro">@livro.Titulo</h3><br />
+                                    
+                                        <h3>Descrição:</h3>
+                                        <p>@livro.Descricao</p>
+                                        <div class="ci-b">
+                                            <button><a asp-area="" asp-controller="Biblioteca" asp-action="DetalheLivro" asp-route-id="@livro.Id">Detalhes sobre o livro</a></button>
+                                            <button><a asp-area="" asp-controller="Biblioteca" asp-action="DetalheAutor" asp-route-nome="@livro.Autor">Detalhes sobre o autor</a></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            primeiro=false;
+                        }
+                    }
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+    </div>
+  </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+</body>
+</html>

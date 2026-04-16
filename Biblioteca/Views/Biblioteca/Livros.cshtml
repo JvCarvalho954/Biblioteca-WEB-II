@@ -1,0 +1,67 @@
+@model List<Biblioteca.Models.Livro>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/css/style.css" type="text/css">
+    <link href="https://fonts.googleapis.com/css2?family=Almendra:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+          rel="stylesheet">
+    <link
+    href="https://fonts.googleapis.com/css2?family=Federo&family=Holtwood+One+SC&family=Italianno&family=Lavishly+Yours&display=swap"
+    rel="stylesheet">
+    <title>Livros</title>
+</head>
+<body>
+    <div class="cabecalho">
+            <h1>Biblioteca</h1>
+            <h2>Correio literário</h2>
+        </div>
+        <div class="pagina-biblioteca">
+
+            <div class="secao">
+                <h1 class="titulo">Destaques</h1>
+
+                <div class="livros-linha">
+                    @foreach(Livro livro in Model){
+                        @if(livro.Destaque){
+                            <a asp-controller="Biblioteca" asp-action="DetalheLivro" asp-route-id="@livro.Id" class="livro-card">
+                                <img src="/@livro.ImgUrl" alt="Livro">
+                            </a>
+                        }
+                    }
+                </div>
+            </div>
+
+            <div class="secao">
+                <h1 class="titulo">Outras opções</h1>
+            @{int i = 0;}
+            @for(int j = 0; j < Model.Count ; j+=3){
+                <div class="livros-linha">
+                    @while(i < j){
+                        //@if(!Model[i].Destaque){
+                            <a asp-controller="Biblioteca" asp-action="DetalheLivro" asp-route-id="@Model[i].Id" class="livro-card">
+                                <img src="/@Model[i].ImgUrl" alt="Livro">
+                            </a>
+                        //}
+                            i++;
+                    }
+                </div>
+                <br />
+            }
+            <div class="livros-linha">
+                    @while(i < Model.Count){
+                        //@if(!Model[i].Destaque){
+                        <a asp-controller="Biblioteca" asp-action="DetalheLivro" asp-route-id="@Model[i].Id"  class="livro-card">
+                            <img src="/@Model[i].ImgUrl" alt="Livro">
+                        </a>
+                        //}
+                        i++;
+                    }
+                </div>
+                <br />
+            </div>
+        </div>
+</body>
+</html>

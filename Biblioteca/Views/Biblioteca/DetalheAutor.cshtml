@@ -1,0 +1,52 @@
+@model Autor;
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Almendra:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Federo&family=Holtwood+One+SC&family=Italianno&family=Lavishly+Yours&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="~/css/style.css" type="text/css">
+    <title>Página do Autor</title>
+</head>
+<body class="fundoselo">
+
+       <div id="container">
+    <div class="card-autor">
+
+        <h1 class="titulo-autor">@Model.Nome</h1>
+
+        <div class="conteudo-autor">
+
+            <!-- ESQUERDA -->
+            <div class="autor-esquerda">
+                <div class="img-autor">
+                    <img src="~/@Model.ImgUrl">
+                </div>
+
+                <h4>Nascimento: <span>@Model.Nascimento, @Model.LocalNatal</span></h4><br />
+                <h4>Falecimento: <span>@(Model.Falecimento is null ? Html.Raw("--/--/----") : Html.Raw(Model.Falecimento))</span></h4><br /><br />
+
+                
+
+             </div>
+
+            <!-- MEIO -->
+            <div class="autor-meio">
+                <h2>Sobre:</h2>
+                <p>@Model.Descricao</p>
+            </div>
+
+            <!-- DIREITA -->
+            <div class="livro-direita">
+                <img src=@Html.Raw("/livro1" + Model.ImgUrl)>
+                <img src=@Html.Raw("/livro2" + Model.ImgUrl)>
+                <img src=@Html.Raw("/livro3" + Model.ImgUrl)>
+            </div>
+
+        </div>
+    </div>
+</div>
+</body>
+</html>
