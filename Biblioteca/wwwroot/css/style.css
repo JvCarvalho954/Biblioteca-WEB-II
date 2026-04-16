@@ -1,0 +1,504 @@
+.italianno-regular {
+  font-family: "Italianno", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+.holtwood-one-sc-regular {
+  font-family: "Holtwood One SC", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+.federo-regular {
+  font-family: "Federo", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+.lavishly-yours-regular {
+  font-family: "Lavishly Yours", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+
+a{
+    color: #effaee;
+}
+
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.navbar {
+    background-color: #1B659C !important;
+    border-bottom: none !important;
+    color:#ffff !important;
+}
+
+/* Corpo da página */
+body {
+    background-color: #d2e3ef;
+    text-align: center;
+    overflow-y: auto;
+}
+
+/* Cabeçalho */
+.cabecalho {
+    background-image: url('/cabeçalho.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+   
+    padding: 10px; /* menor */
+    text-align: center;
+
+    background-color: #D2E3EF;
+    color:#242527;
+}
+
+.cabecalho h1 {
+    font-family: "Italianno", cursive;
+    font-size: 120px; /* antes 120px */
+    margin:0px;
+}
+
+.cabecalho h2 {
+    font-family: "Holtwood One SC", serif;
+    font-size: 24px; /* menor */
+    margin-top: -20px;
+}
+
+/* Seção de livros */
+.livros {
+    display: block;
+    margin: 40px auto 40px auto; /* antes enorme */
+    padding: 10px;
+    width: 60%;
+    border-radius: 10px;
+    background-color: #1B659C;
+}
+
+.livros h2 {
+    margin-bottom: -20px;
+    font-family: "Italianno", cursive;
+    font-size:80px; /* menor */
+    color:#ffff;
+}
+
+.livro{
+    margin: 10px;
+    height: 200px; /* menor */
+}
+
+.livros2{
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* menor */
+}
+
+.footer {
+    background-image: url('/rodape.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    
+    color: white;
+    text-align: center;
+    padding: 15px;
+}
+
+.carousel-item{
+    height: 470px;
+}
+
+.ci {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px; /* menor */
+    
+    width: 80%;
+    max-width: 800px;
+    margin: 10px auto 40px auto; /* menor */
+
+    font-family: "Federo";
+    color: #effaee;
+    text-align: left;
+}
+
+.ci a{
+    text-decoration: none;
+    font-size: 24px; /* menor */
+}
+
+.ci-img {
+    width: 250px; /* menor */
+}
+
+.ci-img img {
+    width: 100%;
+    height: 300px; /* antes 420px */
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+.ci-t{
+    padding: 10px;
+    margin: 10px;
+    width: 600px; /* menor */
+    height: auto; /* remove altura fixa */
+    font-size: 20px; /* menor */
+}
+
+.ci-b{
+    justify-self: center;
+    justify-items: center;
+    display: flex;
+    gap:14px;
+    font-family: "Federo";
+}
+
+.ci-b a{
+    font-size: 20px;
+    color: #242527;
+  
+}
+
+ button {
+    padding: 8px 12px; /* menor */
+    border-radius: 8px;
+    border: none;
+    background-color: #D2E3EF;
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 20px;
+  
+}
+button a {
+    text-decoration: none; /* tira o traço */
+    color: inherit; /* mantém a cor do botão */
+}
+
+.ci-b button:hover {
+    background-color: #95b6ce;
+}
+
+.titulo-livro {
+    font-size: 40px; /* menor */
+    margin-bottom: -10px;
+    
+}
+
+
+.carousel {
+    max-width: 1200px; /* menor */
+    margin: 0 auto;
+}
+.fundoselo {
+    background-image: url('/fotoselo.png'); /* coloca o nome da imagem */
+    background-size: 100%; /* ocupa toda a tela */
+   
+}
+/* FUNDO */
+
+
+/* CENTRALIZA TUDO */
+#container {
+    min-height: 83vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* CARD AZUL */
+.card-livro {
+    background-color: #2C6A99;
+    width: 60%;
+    max-width: 2000px;
+    padding: 40px;
+    border-radius: 20px;
+
+    display: flex;
+    gap: 40px;
+}
+
+/* LADO ESQUERDO */
+.lado-esquerdo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* IMAGEM */
+.img-livro {
+    width: 250px;
+    height: 350px;
+    margin-top: 60px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 20px;
+}
+
+
+
+/* LADO DIREITO */
+.lado-direito {
+    color: white;
+    text-align: left;
+    max-width: 900px;
+    font-size: 23px;
+    font-family: "Federo";
+}
+
+/* TÍTULO */
+.titulo {
+    font-family: "Italianno";
+    font-size: 80px;
+    margin-bottom: 20px;
+}
+.img-livro img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* encaixa certinho */
+    border-radius: 10px;
+}
+/* ===== PAGINA AUTOR ===== */
+
+/* CARD igual ao livro */
+.card-autor {
+    background-color: #2C6A99;
+    width: 70%;
+    padding: 40px;
+    border-radius: 20px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* CONTEÚDO (3 colunas) */
+.conteudo-autor {
+    display: flex;
+    gap: 40px;
+}
+
+/* ESQUERDA */
+.autor-esquerda {
+    display: flex;
+    flex-direction: column;
+    width: 25%;
+    color: white;
+    text-align: left;
+    font-family: "Federo";
+}
+
+/* IMAGEM AUTOR */
+.img-autor {
+    width: 100%;
+    height: 250px;
+    background-color: #ccc;
+    margin-bottom: 15px;
+}
+
+.img-autor img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+
+/* MEIO */
+.autor-meio {
+    width: 70%;
+    color: white;
+    text-align: left;
+    font-family: "Federo";
+    font-size: 22px;
+    
+}
+
+/* DIREITA (livros) */
+.livro-direita {
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: -20px;
+    
+}
+
+.livro-direita img {
+    width: 70%;
+    height: 190px;
+    object-fit: cover;
+    background-color: #ccc;
+}
+
+/* TÍTULO */
+.titulo-autor {
+    font-family: "Italianno";
+    font-size: 80px;
+    text-align: center;
+    color: white;
+    margin-bottom: -20px;
+}
+
+.pagina-biblioteca {
+    background-color: #d2e3ef;
+    padding: 40px;
+    background-image: url('/fotoselo.png');
+    background-size: 100%;
+    background-repeat: repeat; /* faz repetir tipo estampa */
+}
+
+/* caixa azul */
+.pagina-biblioteca .secao {
+    background-color: #1b659c;
+    border-radius: 20px;
+    padding: 20px;
+    margin: 30px auto;
+    width: 55%;
+    text-align: center;
+    
+}
+
+/* título */
+.pagina-biblioteca .titulo {
+    color: white;
+    font-size: 80px;
+    margin-bottom: 8px;
+}
+
+/* LINHA DE LIVROS (aqui está o segredo 👇) */
+.pagina-biblioteca .livros-linha {
+    display: flex;
+    justify-content: space-around;
+}
+
+/* cada livro */
+.pagina-biblioteca .livro-card {
+    width: 180px;
+    height: 260px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.pagina-biblioteca .livro-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* encaixa a imagem bonitinho */
+    border-radius: 8px;
+}
+.pagina-biblioteca .livro-card {
+    display: block;
+    width: 150px;
+    height: 220px;
+    text-decoration: none;
+}
+
+.pagina-biblioteca .livro-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+    transition: 0.3s;
+}
+
+/* efeito bonito */
+.pagina-biblioteca .livro-card:hover img {
+    transform: scale(1.05);
+}
+.autor-card {
+    display: flex;
+    background-color: #1b659c;
+    padding: 20px;
+    margin: 20px;
+    color: white;
+}
+
+.autor-img img {
+    width: 120px;
+    height: 150px;
+}
+
+.autor-info {
+    margin-left: 20px;
+}
+
+.autor-acao {
+    margin-left: auto;
+}
+.pagina-autores {
+    padding: 60px;
+    background-image: url('/fotoselo.png');
+    background-size: 100%;
+    background-repeat: repeat;
+}
+
+/* centraliza lista */
+.lista-autores {
+    width: 60%;
+    margin: auto;
+}
+
+/* card */
+.autor-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    background-color: #1b659c;
+    border-radius: 20px;
+
+    padding: 25px;
+    margin: 40px 0;
+
+    color: white;
+
+    box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+}
+
+/* imagem */
+.autor-img img {
+    width: 180px;
+    height:200px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+/* info */
+.autor-info {
+    flex: 1;
+    margin-left: 40px;
+    margin-right: 25px;
+    text-align: left;
+     font-family: "Federo", sans-serif;
+}
+
+.autor-info h2 {
+    font-size: 23px;
+    margin-bottom: 10px;
+}
+
+/* botão */
+.autor-acao button {
+    background-color: #d2e3ef;
+    color: #242527;
+    border: none;
+    padding: 20px 15px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-family: "Federo";
+    transition: 0.3s;
+}
+
+.autor-acao button:hover {
+    background-color: #95b6ce;
+    transform: scale(1.05);
+}
