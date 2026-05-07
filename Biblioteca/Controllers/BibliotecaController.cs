@@ -46,4 +46,14 @@ public class BibliotecaController : Controller
         else
             return NotFound();
     }
+
+    public IActionResult LogLivro()
+    {
+        return View();
+    }
+
+    public IActionResult LogAutor()
+    {
+        return View();
+    }
 }
