@@ -1,5 +1,6 @@
 using System.Diagnostics;
 using Biblioteca.Models;
+using Biblioteca.Repositories;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Biblioteca.Controllers;
@@ -7,51 +8,68 @@ namespace Biblioteca.Controllers;
 
 public class BibliotecaController : Controller
 {
-    BibliotecaContext _context;
-    public BibliotecaController(BibliotecaContext context)
+    readonly ILivroRepository _livroRepository;
+    readonly IAutorRepository _autorRepository;
+    
+
+    public BibliotecaController(ILivroRepository livroRepository, IAutorRepository autorRepository)
     {
-        _context = context;
+        _livroRepository = livroRepository;
+        _autorRepository = autorRepository;
     }
 
-    public IActionResult Index()
+    public async Task<IActionResult> IndexAsync()
     {
-        return View(_context.GetLivros());
+        var livros = await _livroRepository.BuscarTodosLivrosAsync(); 
+        return View(livros);
     }
 
-    public IActionResult Livros()
+    public async Task<IActionResult> LivrosAsync()
     {
-        return View(_context.GetLivros());
+        var livros = await _livroRepository.BuscarTodosLivrosAsync(); 
+        return View(livros);
     }
-
-    public IActionResult DetalheAutor(string nome)
+/*
+    public async Task<IActionResult> DetalheAutor(string nome)
     {
+        
         Debug.WriteLine(nome);
-        Autor? autor = _context.GetAutor().FirstOrDefault(a => a.Nome == nome); 
+        var autores = _autorRepository.BuscarTodosAutoresAsync();
+        Autor autor = 
+        //.FirstOrDefault(l => l.Id == id);
         if(autor is not null)
             return View(autor);
         else
             return NotFound();
+            
     }
-
-    public IActionResult Autores()
+*/
+    public async Task<IActionResult> AutoresAsync()
     {
-        return View(_context.GetAutor());
+        var autores = await _autorRepository.BuscarTodosAutoresAsync();
+        return View(autores);
     }
 
+/*
     public IActionResult DetalheLivro(int id)
     {
-        Livro? livro = _context.GetLivros().FirstOrDefault(l => l.Id == id); 
+        Livro? livro = _livroRepository.BuscarTodosLivrosAsync().FirstOrDefault(l => l.Id == id); 
         if(livro is not null)
             return View(livro);
         else
             return NotFound();
     }
-
-    public IActionResult LogLivro()
+*/
+    public async Task<IActionResult> CriarLivroAsync()
     {
         return View();
     }
-
+    [HttpPost]
+    public async Task<IActionResult> CriarLivroAsync(Livro livro)
+    {
+        await _livroRepository.CriarLivroAsync(livro);
+        return RedirectToAction("CriarLivro");
+    }
     public IActionResult LogAutor()
     {
         return View();

@@ -1,4 +1,5 @@
 using Biblioteca.Models;
+using Biblioteca.Repositories;
 using Microsoft.EntityFrameworkCore;
 var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.
@@ -10,6 +11,8 @@ builder.Services.AddDbContext<BibliotecaContext>
     (options => options.UseMySql(connectionString,
         ServerVersion.AutoDetect(connectionString))
     );
+builder.Services.AddScoped<ILivroRepository, LivroRepository>();
+builder.Services.AddScoped<IAutorRepository, AutorRepository>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

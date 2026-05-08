@@ -12,6 +12,7 @@ public class BibliotecaContext : DbContext
  
  
     public DbSet<Livro> Livros { get; set; }
+    public DbSet<Autor> Autores {get; set; }
   
     public List<Livro> GetLivros(bool bd = false)
 
@@ -155,7 +156,7 @@ public class BibliotecaContext : DbContext
             }
         };
     }
-    public DbSet<Autor> Autores {get; set; }
+
     public List<Autor> GetAutor()
     {
         return new List<Autor>(){

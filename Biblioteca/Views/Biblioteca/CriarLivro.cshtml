@@ -6,24 +6,24 @@
     <title>LogLivro</title>
 </head>
 <body>
-    <form>
+    <form method="post" asp-action="CriarLivro" asp-controller="Biblioteca">
         <label>Cadastrar um livro:</label>
         <label>Título:</label>
-        <input />
+        <input name="Titulo"/>
         <label>Autor:</label>
-        <input />
+        <input name="Autor"/>
         <label>Genero:</label>
-        <input />
+        <input name="Genero"/>
         <label>Ano de publicação:</label>
-        <input />
+        <input name="DataPublicacao" type="date"/>
         <label>Resumo:</label>
-        <input />
+        <input name="Resumo"/>
         <label>Descrição:</label>
-        <input />
+        <input name="Descricao"/>
         <label>URL da Imagem:</label>
-        <input />
+        <input name="ImgUrl"/>
         <label>Numero de páginas:</label>
-        <input />
+        <input name="NumPaginas"/>
         <input type="submit" value="Cadastrar">
     </form>
 </body>
