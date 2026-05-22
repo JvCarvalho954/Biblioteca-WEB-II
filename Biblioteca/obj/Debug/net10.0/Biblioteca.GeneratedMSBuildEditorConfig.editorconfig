@@ -34,6 +34,10 @@ build_property.EnableCodeStyleSeverity =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmlibGlvdGVjYVxBdXRvcmVzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/teste/Music/webiiteste/Biblioteca-WEB-II/Biblioteca/Views/Biblioteca/CriarAutor.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmlibGlvdGVjYVxDcmlhckF1dG9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/teste/Music/webiiteste/Biblioteca-WEB-II/Biblioteca/Views/Biblioteca/CriarLivro.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmlibGlvdGVjYVxDcmlhckxpdnJvLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -52,10 +56,6 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/teste/Music/webiiteste/Biblioteca-WEB-II/Biblioteca/Views/Biblioteca/Livros.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmlibGlvdGVjYVxMaXZyb3MuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/teste/Music/webiiteste/Biblioteca-WEB-II/Biblioteca/Views/Biblioteca/LogAutor.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmlibGlvdGVjYVxMb2dBdXRvci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/teste/Music/webiiteste/Biblioteca-WEB-II/Biblioteca/Views/Shared/Error.cshtml]

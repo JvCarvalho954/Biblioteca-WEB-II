@@ -14,7 +14,7 @@ public class BibliotecaContext : DbContext
     public DbSet<Livro> Livros { get; set; }
     public DbSet<Autor> Autores {get; set; }
   
-    public List<Livro> GetLivros(bool bd = false)
+    /*public List<Livro> GetLivros(bool bd = false)
 
     {
         return bd ? Livros.ToList() : new List<Livro>()
@@ -264,5 +264,5 @@ public class BibliotecaContext : DbContext
                 Obras = "O Código Da Vinci; Anjos e Demônios; Inferno"
             }
         };
-    }
+    }*/
 }

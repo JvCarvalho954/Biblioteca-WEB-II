@@ -13,7 +13,7 @@ public class AutorRepository : IAutorRepository
     }
     public async Task<List<Autor>> BuscarTodosAutoresAsync()
     {
-        return await _context.Autores.ToListAsync();
+        return await _context.Autores.ToListAsync();;
     }
     public async Task<bool> CriarAutorAsync(Autor autor)
     {
