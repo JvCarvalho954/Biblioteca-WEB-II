@@ -22,10 +22,28 @@ public class LivroRepository : ILivroRepository
         await _context.SaveChangesAsync();
         return true;
     }
+    public async Task<bool> AtualizarLivroAsync(Livro livro)
+    {
+        var livroBanco = await _context.Livros.Include(x => x.Autor).FirstOrDefaultAsync(x => x.Id == livro.Id);
+        if (livro == null) return false;
+        livroBanco.Id = livro.Id;
+        livroBanco.Titulo = livro.Titulo;
+        livroBanco.Genero = livro.Genero;
+        livroBanco.NumPaginas = livro.NumPaginas;
+        livroBanco.DataPublicacao = livro.DataPublicacao;
+        livroBanco.Resumo = livro.Resumo;
+        livroBanco.Descricao = livro.Descricao;
+        livroBanco.ImgUrl = livro.ImgUrl;
+        livroBanco.Destaque = livro.Destaque;
+        livroBanco.Autor = livro.Autor;
+        await _context.SaveChangesAsync();
+        return true;
+    }
+
 }
 public interface ILivroRepository
 {
     Task<List<Livro>> BuscarTodosLivrosAsync();
     Task<bool> CriarLivroAsync(Livro livro, int AutorId);
-
+    Task<bool> AtualizarLivroAsync(Livro livro);
 }

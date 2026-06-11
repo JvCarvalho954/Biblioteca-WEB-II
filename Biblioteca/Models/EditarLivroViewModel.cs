@@ -1,0 +1,15 @@
+namespace Biblioteca.Models;
+
+public class EditarLivroViewModel()
+{
+    public int Id {get; set; }
+    public int NumPaginas {get; set; }
+    public Autor Autor {get; set; }
+    public string? Titulo {get; set; }
+    public string? Genero {get; set; }
+    public int DataPublicacao {get; set; }
+    public string? Resumo {get; set; }
+    public string? Descricao {get; set;}
+    public string? ImgUrl {get; set; }
+    public bool Destaque {get; set; }
+}

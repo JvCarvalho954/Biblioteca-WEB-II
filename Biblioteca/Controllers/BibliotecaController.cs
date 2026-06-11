@@ -94,4 +94,33 @@ public class BibliotecaController : Controller
         await _autorRepository.CriarAutorAsync(autor);
         return RedirectToAction("CriarAutor");
     }
+
+    [HttpGet]
+    public async Task<IActionResult> EditarLivroAsync(int id)
+    {
+        var livros = await _livroRepository.BuscarTodosLivrosAsync();
+        var livro = livros.FirstOrDefault(x => x.Id == id);
+        if(livro == null) return NotFound();
+
+        var viewModel = new EditarLivroViewModel
+        {
+            Id = livro.Id,
+            NumPaginas = livro.NumPaginas,
+            Titulo = livro.Titulo,
+            Genero = livro.Genero,
+            DataPublicacao = livro.DataPublicacao,
+            Resumo = livro.Resumo,
+            Descricao = livro.Descricao,
+            ImgUrl = livro.ImgUrl,
+            Destaque = livro.Destaque,
+            
+            Autor = livro.Autor.?Id ?? 0
+        };
+        ViewBag.Autores = new SelectList(
+            await _autorRepository.BuscarTodosAutoresAsync(),
+            "Id", "nome", viewModel.Autor
+        );
+
+        return View(viewModel);
+    }
 }
