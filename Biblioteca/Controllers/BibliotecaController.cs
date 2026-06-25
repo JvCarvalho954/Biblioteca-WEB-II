@@ -48,6 +48,25 @@ public class BibliotecaController : Controller
         return View(autores);
     }
 
+    public IActionResult AdminLogin()
+    {
+        return View();
+    }
+    public IActionResult AdminLoginSubmitted(string senha)
+    {
+        if(senha == "admin123")
+        {
+            return RedirectToAction("AdminView");
+        }
+        return RedirectToAction("AdminLogin");
+    }
+
+    public IActionResult AdminView()
+    {
+        return View();
+    }
+    
+
 
     public async Task<IActionResult> DetalheLivroAsync(int id)
     {
@@ -114,7 +133,7 @@ public class BibliotecaController : Controller
             ImgUrl = livro.ImgUrl,
             Destaque = livro.Destaque,
             
-            Autor = livro.Autor.?Id ?? 0
+            AutorId = livro.Autor?.Id ?? 0
         };
         ViewBag.Autores = new SelectList(
             await _autorRepository.BuscarTodosAutoresAsync(),
@@ -123,4 +142,27 @@ public class BibliotecaController : Controller
 
         return View(viewModel);
     }
+
+    [HttpPost]
+    public async Task<IActionResult> EditarLivro(EditarLivroViewModel livroViewModel)
+    {
+    var autores = await _autorRepository.BuscarTodosAutoresAsync();
+    var autorSelecionado = autores.FirstOrDefault(a => a.Id == livroViewModel.Autor.Id);
+    Livro livro = new()
+        {
+            Id = livroViewModel.Id,
+            Titulo = livroViewModel.Titulo,
+            Genero = livroViewModel.Genero,
+            NumPaginas = livroViewModel.NumPaginas,
+            DataPublicacao = livroViewModel.DataPublicacao,
+            Resumo = livroViewModel.Resumo,
+            Descricao = livroViewModel.Descricao,
+            ImgUrl = livroViewModel.ImgUrl,
+            Destaque = livroViewModel.Destaque,
+            Autor = autorSelecionado
+        };
+        await _livroRepository.AtualizarLivroAsync(livro);
+        return RedirectToAction("Livro");
+    }
+
 }
