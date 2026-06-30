@@ -113,7 +113,7 @@ public class BibliotecaController : Controller
         await _autorRepository.CriarAutorAsync(autor);
         return RedirectToAction("CriarAutor");
     }
-
+    
     [HttpGet]
     public async Task<IActionResult> EditarLivroAsync(int id)
     {
@@ -133,11 +133,11 @@ public class BibliotecaController : Controller
             ImgUrl = livro.ImgUrl,
             Destaque = livro.Destaque,
             
-            AutorId = livro.Autor?.Id ?? 0
+            AutorId = livro.Autor?.Id ?? 0,
+            Autor = livro.Autor!
         };
         ViewBag.Autores = new SelectList(
-            await _autorRepository.BuscarTodosAutoresAsync(),
-            "Id", "nome", viewModel.Autor
+            await _autorRepository.BuscarTodosAutoresAsync(), "Id","Nome"
         );
 
         return View(viewModel);
@@ -159,10 +159,10 @@ public class BibliotecaController : Controller
             Descricao = livroViewModel.Descricao,
             ImgUrl = livroViewModel.ImgUrl,
             Destaque = livroViewModel.Destaque,
-            Autor = autorSelecionado
+            Autor = autorSelecionado!
         };
         await _livroRepository.AtualizarLivroAsync(livro);
-        return RedirectToAction("Livro");
+        return RedirectToAction("Livros");
     }
 
 }
