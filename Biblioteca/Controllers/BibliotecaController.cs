@@ -48,11 +48,14 @@ public class BibliotecaController : Controller
         return View(autores);
     }
 
+    
     public IActionResult AdminLogin()
     {
         return View();
     }
-    public IActionResult AdminLoginSubmitted(string senha)
+    
+    [HttpPost]
+    public IActionResult AdminLogin(string senha)
     {
         if(senha == "admin123")
         {
@@ -147,7 +150,7 @@ public class BibliotecaController : Controller
     public async Task<IActionResult> EditarLivro(EditarLivroViewModel livroViewModel)
     {
     var autores = await _autorRepository.BuscarTodosAutoresAsync();
-    var autorSelecionado = autores.FirstOrDefault(a => a.Id == livroViewModel.Autor.Id);
+    var autorSelecionado = autores.FirstOrDefault(a => a.Id == livroViewModel.AutorId);
     Livro livro = new()
         {
             Id = livroViewModel.Id,
