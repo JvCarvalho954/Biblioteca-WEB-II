@@ -64,9 +64,10 @@ public class BibliotecaController : Controller
         return RedirectToAction("AdminLogin");
     }
 
-    public IActionResult AdminView()
+    public async Task<IActionResult> AdminViewAsync()
     {
-        return View();
+        var livros = await _livroRepository.BuscarTodosLivrosAsync();
+        return View(livros);
     }
     
 
@@ -167,5 +168,25 @@ public class BibliotecaController : Controller
         await _livroRepository.AtualizarLivroAsync(livro);
         return RedirectToAction("Livros");
     }
+    [HttpGet]
+    public async Task<IActionResult> DeletarLivro(int id)
+    {
+        var livros = await _livroRepository.BuscarTodosLivrosAsync();
+        var livro = livros.FirstOrDefault(x => x.Id == id);
 
+        var viewModel = new DeletarLivroViewModel
+        {
+            Id = livro!.Id,
+            Titulo = livro.Titulo,
+            AutorNome = livro.Autor?.Nome ?? "Sem Autor"
+        };
+
+        return View(viewModel);
+    }
+    [HttpPost, ActionName("DeletarLivro")]
+    public async Task<IActionResult> DeletarLivroConfirmado(int id)
+    {
+        await _livroRepository.DeletarLivroAsync(id);
+        return RedirectToAction("AdminView");
+    }
 }

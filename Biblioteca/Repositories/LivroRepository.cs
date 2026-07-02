@@ -39,11 +39,22 @@ public class LivroRepository : ILivroRepository
         await _context.SaveChangesAsync();
         return true;
     }
+    public async Task<bool> DeletarLivroAsync(int id)
+    {
+        var livro = await _context.Livros.FirstOrDefaultAsync(x => x.Id == id);
+        if (livro == null) return false;
 
+        _context.Livros.Remove(livro);
+        await _context.SaveChangesAsync();
+        
+        return true;
+    }
 }
+
 public interface ILivroRepository
 {
     Task<List<Livro>> BuscarTodosLivrosAsync();
     Task<bool> CriarLivroAsync(Livro livro, int AutorId);
     Task<bool> AtualizarLivroAsync(Livro livro);
+    Task<bool> DeletarLivroAsync(int id);
 }

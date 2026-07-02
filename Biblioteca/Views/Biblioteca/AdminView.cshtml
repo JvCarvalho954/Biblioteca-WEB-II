@@ -1,3 +1,131 @@
+@model List<Biblioteca.Models.Livro>;
+<style>
+    .italianno-regular {
+        font-family: "Italianno", cursive;
+        font-weight: 400;
+        font-style: normal;
+    }
+
+    body{
+        font-family: Arial, Helvetica, sans-serif;
+        background:#eef6ff;
+    }
+
+    h1{
+        font-family: "Italianno", cursive;
+        text-align:center;
+        color:white;
+        background:#4169a8;
+        border-radius:12px;
+        padding:15px;
+        width:80%;
+        margin:30px auto;
+        font-size:80px;
+    }
+
+    .grid{
+        width:80%;
+        margin:auto;
+        border:2px solid #345b91;
+        border-collapse:collapse;
+    }
+
+    a{
+        color: #212529;
+    }
+
+    .cabeca,
+    .entradas{
+        display:grid;
+        grid-template-columns: 70px 2fr 1.5fr 120px 170px 100px 90px;
+    }
+
+    .cabeca{
+        background:#4169a8;
+        color:white;
+        font-weight:bold;
+    }
+
+    .cabeca div,
+    .entradas div{
+        border:1px solid #345b91;
+        padding:10px;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        text-align:center;
+    }
+
+    .entradas{
+        background:white;
+    }
+
+    .entradas:nth-child(even){
+        background:#f5f8fd;
+    }
+
+    .entradas:hover{
+        background:#dfeeff;
+    }
+    .btn-add{
+        border-radius: 5px;
+        background-color: limegreen;
+        height: 27px;
+        width: 27px;
+        text-decoration: none;
+    }
+    .btn-primary{
+        border-radius: 5px;
+        background-color: coral;
+        height: 27px;
+        width: 27px;
+        margin: 2px;
+        text-decoration: none;
+    }
+    .btn-del{
+        border-radius: 5px;
+        background-color: firebrick;
+        height: 27px;
+        width: 27px;
+        margin: 2px;
+        text-decoration: none;
+    }
+</style>
+
 <body>
-    <h1>admin view</h1>
+
+<h1>Administrar Livros</h1>
+
+<div class="grid">
+
+    <div class="cabeca">
+        <div>ID</div>
+        <div>Título</div>
+        <div>Autor</div>
+        <div>N° páginas</div>
+        <div>Data de publicação</div>
+        <div>Destaque</div>
+        <div>
+            <a asp-action="CriarLivro" class="btn-add">+</a>
+        </div>
+    </div>
+
+    @foreach (Livro livro in Model)
+    {
+        <div class="entradas">
+            <div>@livro.Id</div>
+            <div><a asp-action="DetalheLivro" asp-route-id="@livro.Id">@livro.Titulo</a></div>
+            <div><a asp-action="DetalheAutor" asp-route-id="@livro.Autor.Id">@livro.Autor.Nome</a></div>
+            <div>@livro.NumPaginas</div>
+            <div>@livro.DataPublicacao</div>
+            <div>@(livro.Destaque ? "Sim" : "Não")</div>
+            <div class="acoes">
+                <a asp-action="EditarLivro" asp-route-id="@livro.Id" class="btn-primary">✏️</a>
+                <a asp-action="DeletarLivro" asp-route-id="@livro.Id" class="btn-del">🗑️</a>
+            </div>
+        </div>
+    }
+
+</div>
+
 </body>
