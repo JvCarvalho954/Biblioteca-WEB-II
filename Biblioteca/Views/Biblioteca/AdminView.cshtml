@@ -1,4 +1,5 @@
-@model List<Biblioteca.Models.Livro>;
+@using System.Data.Common
+@model Biblioteca.Models.AdminViewModel;
 <style>
     .italianno-regular {
         font-family: "Italianno", cursive;
@@ -110,7 +111,7 @@
         </div>
     </div>
 
-    @foreach (Livro livro in Model)
+    @foreach (Livro livro in Model.listaLivros)
     {
         <div class="entradas">
             <div>@livro.Id</div>
@@ -128,4 +129,36 @@
 
 </div>
 
+    <br />
+<h1>Administrar Autores</h1>
+<div class="grid">
+
+    <div class="cabeca">
+        <div>ID</div>
+        <div>Nome</div>
+        <div>Nascimento</div>
+        <div>Falecimento</div>
+        <div>Livros vinculados</div>
+        <div>
+            <a asp-action="CriarAutor" class="btn-add">+</a>
+        </div>
+    </div>
+    @foreach (Autor autor in Model.listaAutor)
+    {
+        <div class="entradas">
+            <div>@autor.Id</div>
+            <div><a asp-action="DetalheAutor" asp-route-id="@autor.Id">@autor.Nome</a></div>
+            <div>@autor.Nascimento</div>
+            <div>@(autor.Falecimento==null ? "" : autor.Falecimento )</div>
+            <div>@foreach(Livro livro in Model.listaLivros){
+                if (livro.Autor.Id == autor.Id){Html.Raw(livro.Titulo);}
+                else{Html.Raw("");}
+                }</div>
+            <div class="acoes">
+                <a asp-action="DeletarAutor" asp-route-id="@autor.Id" class="btn-del">🗑️</a>
+            </div>
+        </div>
+    }
+
+</div>
 </body>

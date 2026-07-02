@@ -1,6 +1,7 @@
 using System.Diagnostics;
 using Biblioteca.Models;
 using Biblioteca.Repositories;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
@@ -67,7 +68,13 @@ public class BibliotecaController : Controller
     public async Task<IActionResult> AdminViewAsync()
     {
         var livros = await _livroRepository.BuscarTodosLivrosAsync();
-        return View(livros);
+        var autores = await _autorRepository.BuscarTodosAutoresAsync();
+        var listas = new AdminViewModel
+        {
+            listaLivros = livros,
+            listaAutor = autores
+        };
+        return View(listas);
     }
     
 
@@ -104,7 +111,7 @@ public class BibliotecaController : Controller
             Destaque = livroViewModel.Destaque
         };
         await _livroRepository.CriarLivroAsync(livro, livroViewModel.AutorId);
-        return RedirectToAction("CriarLivro");
+        return RedirectToAction("AdminView");
     }
     
     public IActionResult CriarAutorAsync()
@@ -187,6 +194,31 @@ public class BibliotecaController : Controller
     public async Task<IActionResult> DeletarLivroConfirmado(int id)
     {
         await _livroRepository.DeletarLivroAsync(id);
+        return RedirectToAction("AdminView");
+    }
+    [HttpGet]
+    public async Task<IActionResult> DeletarAutor(int id)
+    {
+        var autores = await _autorRepository.BuscarTodosAutoresAsync();
+        var autor = autores.FirstOrDefault(x => x.Id == id);
+        if (autor == null) {return NotFound();}
+        bool temLivros = await _autorRepository.PossuiLivrosVinculadosAsync(id);
+        var viewModel = new DeletarAutorViewModel{
+            Id = autor.Id,
+            Nome = autor.Nome,
+            PossuiLivrosVinculados = temLivros
+        };
+        return View(viewModel);
+    }
+    [HttpPost, ActionName("DeletarAutor")]
+    public async Task<IActionResult> DeletarAutorConfirmado(int id)
+    {
+        bool temLivros = await _autorRepository.PossuiLivrosVinculadosAsync(id);
+        if (temLivros)
+        {
+            return RedirectToAction("AdminView");
+        }
+        await _autorRepository.DeletarAutorAsync(id);
         return RedirectToAction("AdminView");
     }
 }

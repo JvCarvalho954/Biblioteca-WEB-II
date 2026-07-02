@@ -2011,19 +2011,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\jv_ca\\.nuget\\packages\\": {}
+    "C:\\Users\\teste\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\Disco E\\VSCode\\escola\\Biblioteca\\Biblioteca.csproj",
+      "projectUniqueName": "C:\\Users\\teste\\Music\\webiiteste\\Biblioteca-WEB-II\\Biblioteca\\Biblioteca.csproj",
       "projectName": "Biblioteca",
-      "projectPath": "E:\\Disco E\\VSCode\\escola\\Biblioteca\\Biblioteca.csproj",
-      "packagesPath": "C:\\Users\\jv_ca\\.nuget\\packages\\",
-      "outputPath": "E:\\Disco E\\VSCode\\escola\\Biblioteca\\obj\\",
+      "projectPath": "C:\\Users\\teste\\Music\\webiiteste\\Biblioteca-WEB-II\\Biblioteca\\Biblioteca.csproj",
+      "packagesPath": "C:\\Users\\teste\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\teste\\Music\\webiiteste\\Biblioteca-WEB-II\\Biblioteca\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\jv_ca\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\teste\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net10.0"
@@ -2047,7 +2047,7 @@
         "auditLevel": "low",
         "auditMode": "all"
       },
-      "SdkAnalysisLevel": "10.0.200"
+      "SdkAnalysisLevel": "10.0.100"
     },
     "frameworks": {
       "net10.0": {
@@ -2093,7 +2093,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.200/PortableRuntimeIdentifierGraph.json",
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.103/PortableRuntimeIdentifierGraph.json",
         "packagesToPrune": {
           "Microsoft.AspNetCore": "(,10.0.32767]",
           "Microsoft.AspNetCore.Antiforgery": "(,10.0.32767]",
